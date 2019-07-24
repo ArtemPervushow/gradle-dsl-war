@@ -38,7 +38,7 @@ class GradleJobBuilder {
                     adapters {
                         tomcat8xAdapter {
                             credentialsId(this.credentialsId)
-                            url("localhost:8082")
+                            url("http://localhost:8082")
                         }
                         contextPath("build/lib/")
                         onFailure(false)
