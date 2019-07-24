@@ -34,7 +34,17 @@ class GradleJobBuilder {
             }
 
             publishers {
-                archiveArtifacts artifacts
+                deployPublisher{
+                    adapters {
+                        tomcat8xAdapter {
+                            credentialsId(this.credentialsId)
+                            url("localhost:8082")
+                        }
+                        contextPath("build/lib/")
+                        onFailure(false)
+                        war("gradle-war-1.0-SNAPSHOT.war")
+                    }
+                }
             }
         }
     }
