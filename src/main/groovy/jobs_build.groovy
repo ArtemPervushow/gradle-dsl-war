@@ -34,15 +34,24 @@ class GradleJobBuilder {
             }
 
             publishers {
-                deployPublisher{
-                    adapters {
-                        tomcat8xAdapter {
-                            credentialsId(this.credentialsId)
-                            url("http://localhost:8082")
+                flexiblePublish {
+                    conditionalAction {
+                        condition {
+                            status("SUCCESS", "SUCCESS")
                         }
-                        contextPath("build/lib/")
-                        onFailure(false)
-                        war("gradle-war-1.0-SNAPSHOT.war")
+                        publishers {
+                            deployPublisher{
+                                adapters {
+                                    tomcat8xAdapter {
+                                        credentialsId(this.credentialsId)
+                                        url("http://localhost:8082")
+                                    }
+                                    contextPath("build/lib/")
+                                    onFailure(false)
+                                    war("gradle-war-1.0-SNAPSHOT.war")
+                                }
+                            }
+                        }
                     }
                 }
             }
