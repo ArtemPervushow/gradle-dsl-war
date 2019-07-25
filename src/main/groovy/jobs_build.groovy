@@ -51,6 +51,15 @@ class GradleJobBuilder {
                                     war("gradle-war-1.0-SNAPSHOT.war")
                                 }
                             }
+                            gitPublisher {
+                                branchesToPush {
+                                    branchToPush {
+                                        branchName("master")
+                                        targetRepoName("origin")
+                                    }
+                                }
+                                pushMerge(true)
+                            }
                         }
                     }
                 }
