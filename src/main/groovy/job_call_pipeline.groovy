@@ -9,7 +9,6 @@ pipelineJob('call-pipeline-from-dsl-job'){
     definition {
         cps {
             script(readFileFromWorkspace('src/main/groovy/pipeline-script.groovy'))
-            sanbox(true)
         }
     }
 }
